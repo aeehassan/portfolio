@@ -1098,7 +1098,7 @@ img {
 
   .qualification__sections {
     display: grid;
-    grid-template-columns: 0.6fr;
+    grid-template-columns: minmax(0, 1fr);
     justify-content: center;
   }
 }
@@ -1210,7 +1210,7 @@ img {
   }
 
   .qualification__sections {
-    grid-template-columns: 0.5fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .portfolio__img {
