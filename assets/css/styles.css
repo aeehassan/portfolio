@@ -1398,3 +1398,24 @@ img {
     margin-right: auto;
   }
 }
+
+@media screen and (max-width: 767.98px) {
+  .portfolio__container {
+    margin-bottom: 1.5rem;
+  }
+
+  .project__container {
+    padding-bottom: 1rem;
+  }
+}
+
+@media screen and (min-width: 568px) and (max-width: 767.98px) {
+  .project__data {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .project__data .button--white {
+    margin-top: auto;
+  }
+}
