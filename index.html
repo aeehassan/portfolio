@@ -62,7 +62,22 @@
 
         <div class="nav__btns">
           <!-- Theme change button -->
-          <i class="uil uil-moon change-theme" id="theme-button"></i>
+          <button
+            type="button"
+            class="change-theme"
+            id="theme-button"
+            aria-label="Toggle dark mode"
+            aria-pressed="false"
+          >
+            <i
+              class="uil uil-moon theme-icon theme-icon--moon"
+              aria-hidden="true"
+            ></i>
+            <i
+              class="uil uil-sun theme-icon theme-icon--sun"
+              aria-hidden="true"
+            ></i>
+          </button>
 
           <div class="nav__toggle" id="nav-toggle">
             <i class="uil uil-apps"></i>
