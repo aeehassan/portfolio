@@ -143,6 +143,50 @@ function scrollUp() {
 }
 window.addEventListener("scroll", scrollUp);
 
+/*==================== CONTACT FORM ====================*/
+const contactForm = document.getElementById("contact-form");
+const contactStatus = document.getElementById("contact-status");
+const contactSubmit = contactForm?.querySelector(".contact__submit");
+
+if (window.emailjs) {
+  window.emailjs.init({ publicKey: "wl1X-bkofX0YmYWhJ" });
+}
+
+contactForm?.addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  if (!window.emailjs) {
+    contactStatus.textContent =
+      "The message service is unavailable right now. Please try again later.";
+    return;
+  }
+
+  if (!window.grecaptcha || !window.grecaptcha.getResponse()) {
+    contactStatus.textContent = "Please complete the CAPTCHA before sending.";
+    return;
+  }
+
+  contactSubmit.disabled = true;
+  contactStatus.textContent = "Sending your message...";
+
+  try {
+    await window.emailjs.sendForm(
+      "service_d9n0v0n",
+      "template_iyqtphe",
+      contactForm,
+    );
+    contactForm.reset();
+    contactStatus.textContent = "Your message has been sent. Thank you!";
+  } catch (error) {
+    console.error("EmailJS send failed:", error);
+    contactStatus.textContent =
+      "Your message could not be sent. Please try again in a moment.";
+  } finally {
+    contactSubmit.disabled = false;
+    window.grecaptcha?.reset();
+  }
+});
+
 /*==================== DARK LIGHT THEME ====================*/
 const themeButton = document.getElementById("theme-button");
 const darkTheme = "dark-theme";
